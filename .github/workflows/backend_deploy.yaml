@@ -30,7 +30,7 @@ jobs:
       - name: Deploy Backend for ${{ github.ref_name }}
         run: |
           cd worker/
-          echo '${{ secrets.BACKEND_TOML }}' > wrangler.toml
+          echo '${{ variables.BACKEND_TOML }}' > wrangler.toml
           pnpm install --no-frozen-lockfile
           output=$(pnpm run deploy 2>&1)
           if [ $? -ne 0 ]; then
